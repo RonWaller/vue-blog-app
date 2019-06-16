@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Blog v-bind:posts="posts"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Blog from '../components/Blog';
+import axios from 'axios';
 
 export default {
-  name: "home",
+  name: 'Home',
   components: {
-    HelloWorld
+    Blog
+  },
+  data() {
+    return {
+      posts: []
+    };
+  },
+  methods: {},
+  created() {
+    axios
+      .get('https://jsonplaceholder.typicode.com/posts?_limit=5')
+      .then(res => (this.posts = res.data))
+      .catch(err => console.log(err));
   }
 };
 </script>
