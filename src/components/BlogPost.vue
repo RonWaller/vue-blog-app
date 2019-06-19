@@ -1,6 +1,6 @@
 <template>
   <div class="post_item">
-    <router-link v-bind:to="'/blog/' + post.id" exact>
+    <router-link v-bind:to="'/blogs/' + post.id" exact>
       <h2>{{ post.title }}</h2>
     </router-link>
     <article>{{ post.body | truncate }}</article>

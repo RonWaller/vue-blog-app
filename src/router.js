@@ -25,7 +25,7 @@ export default new Router({
         import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/blog/:id',
+      path: '/blogs/:id',
       name: 'singlePost',
       component: SinglePost
     },
