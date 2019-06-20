@@ -1,14 +1,13 @@
 <template>
   <div class="addBlog">
     <h1>Add New Blog</h1>
-    <quill-editor v-model="content" :options="editorOptions" ref="myQuillEditor"/>
+    <quill-editor v-model="content" ref="myQuillEditor" :options="editorOptions"/>
   </div>
 </template>
 
 <script>
 import 'quill/dist/quill.snow.css';
-import quill from 'quill';
-import { Quill, quillEditor } from 'vue-quill-editor';
+import { quillEditor } from 'vue-quill-editor';
 
 export default {
   name: 'AddBlog',
@@ -20,12 +19,13 @@ export default {
     category: '',
     content: '',
     editorOptions: {
-      theme: 'snow',
       debug: 'info',
       placeholder: 'Type your post...',
-      readOnly: true
+      readOnly: true,
+      theme: 'snow'
     },
-    delta: undefined
+    delta: undefined,
+    editorModule: undefined
   }),
   methods: {
     showImageUI() {
@@ -38,31 +38,30 @@ export default {
       console.log(this.delta);
     }
   },
-  computed: {
-    editor() {
-      return this.$refs.myQuillEditor.quill;
-    }
-  },
+  computed: {},
   mounted() {
-    console.log('this is current quill instance object', this.editor);
+    this.editorModule = this.$refs.myQuillEditor.quill.getModule('toolbar');
+    this.editorModule.addHandler('image', this.showImageUI);
   }
 };
 </script>
 
 <style lang="scss" >
 .addBlog {
-  margin: 25px 0;
+  margin-top: 25px;
   & h1 {
     text-align: center;
   }
 }
 
-.quill-editor {
+.ql-container {
   height: 75vh;
   width: 75vw;
-  margin: 15px auto;
+  margin: 0 auto;
 }
 .ql-toolbar {
+  width: 75vw;
+  margin: 0 auto;
   text-align: center;
 }
 </style>
