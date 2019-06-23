@@ -1,7 +1,11 @@
 <template>
   <div class="addBlog">
     <h1>Add New Blog</h1>
-    <quill-editor v-model="content" ref="myQuillEditor" :options="editorOptions"/>
+    <quill-editor
+      v-model="content"
+      ref="myQuillEditor"
+      :options="editorOptions"
+    />
   </div>
 </template>
 
@@ -46,7 +50,7 @@ export default {
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .addBlog {
   margin-top: 25px;
   & h1 {
@@ -65,4 +69,3 @@ export default {
   text-align: center;
 }
 </style>
-

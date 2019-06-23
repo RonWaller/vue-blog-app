@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Blog v-bind:posts="posts"/>
+    <Blog v-bind:posts="posts" />
   </div>
 </template>
 

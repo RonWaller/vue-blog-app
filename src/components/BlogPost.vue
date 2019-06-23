@@ -24,7 +24,7 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .post_item {
   background-color: #d3d3d3;
   margin: 25px auto;
