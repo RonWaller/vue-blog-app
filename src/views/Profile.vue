@@ -1,40 +1,38 @@
 <template>
-  <div style="max-width: 400px; margin: auto;">
-    <v-card raised>
-      <v-container
-        mt-5
-        fill-height
-        fluid
-        text-xs-center
-        align-center
-        justify-center
-      >
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card color="#00695C" class="white--text">
-              <v-card-title primary-title>
-                <div class="headline">Profile</div>
-              </v-card-title>
-            </v-card>
+  <div style="max-width: 1000px; height: 75vh; margin: auto;">
+    <v-card height="100%" elevation-20>
+      <v-card-title primary-title>
+        <div>
+          <h3 class="headline mb-0">Profile Settings</h3>
+        </div>
+      </v-card-title>
+      <v-divider dark></v-divider>
+      <v-container pa-0 fill-height fluid>
+        <v-layout row justify-space-between>
+          <v-flex md2>
+            <v-list class="py-0 my-4">
+              <v-list-tile
+                class="title"
+                v-for="link in links"
+                :key="link.text"
+                router
+                :to="link.route"
+              >
+                <v-list-tile-content>
+                  <v-list-tile-title class="black--text uppercase">
+                    {{ link.text }}
+                  </v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
           </v-flex>
-          <v-flex xs12>
-            <v-avatar class="mt-3" size="75" color="grey lighten-4">
-              <img
-                src="https://gravatar.com/avatar/58f59c8117c9d7ae2666f24279e03d07?s=400&d=mp&r=pg"
-                alt="avatar"
-              />
-            </v-avatar>
-            <p v-show="userName">Username</p>
-            <v-divider></v-divider>
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field
-              class="mt-3"
-              label="Solo"
-              placeholder="username@gmail.com"
-              solo
-              disabled
-            ></v-text-field>
+
+          <v-flex md10 my-3 text-xs-center>
+            <div>
+              <h4>
+                <router-view />
+              </h4>
+            </div>
           </v-flex>
         </v-layout>
       </v-container>
@@ -47,10 +45,40 @@ export default {
   name: 'Profile',
   data() {
     return {
-      userName: true
+      userName: true,
+      links: [
+        { text: 'General', route: '/profile/general' },
+        { text: 'Account', route: '/profile/account' },
+        { text: 'Security', route: '/profile/security' },
+        { text: 'Email', route: '/profile/email' }
+      ]
     };
   }
 };
 </script>
 
-<style></style>
+<style scoped>
+.v-card {
+  margin-top: 20px;
+}
+.v-card__title {
+  background: #00695c;
+  color: #fff;
+}
+.theme--dark.v-divider {
+  border-color: #000;
+}
+.application a.v-list__tile--active {
+  border-left: 3px solid #00695c;
+  cursor: default;
+}
+.layout.column.list {
+  max-width: 150px;
+}
+.v-list {
+  border: 1px solid #d1d5da;
+}
+.v-list > div.title {
+  border-bottom: 1px solid #d1d5da;
+}
+</style>

@@ -4,6 +4,10 @@ import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Dashboard from './views/Dashboard';
 import Profile from './views/Profile';
+import General from './views/General';
+import Account from './views/Account';
+import Security from './views/Security';
+import Email from './views/Email';
 import Login from './views/Login';
 
 import SinglePost from './components/SinglePost.vue';
@@ -43,7 +47,29 @@ export default new Router({
     {
       path: '/profile',
       name: 'profile',
-      component: Profile
+      component: Profile,
+      children: [
+        {
+          path: 'general',
+          name: 'general',
+          component: General
+        },
+        {
+          path: 'account',
+          name: 'account',
+          component: Account
+        },
+        {
+          path: 'security',
+          name: 'security',
+          component: Security
+        },
+        {
+          path: 'email',
+          name: 'email',
+          component: Email
+        }
+      ]
     },
     {
       path: '/login',
