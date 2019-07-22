@@ -25,9 +25,9 @@
             <v-icon size="45" class="white--text">{{ link.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title class="white--text uppercase">
-              {{ link.text }}
-            </v-list-tile-title>
+            <v-list-tile-title class="white--text uppercase">{{
+              link.text
+            }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>

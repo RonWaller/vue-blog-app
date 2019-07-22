@@ -19,9 +19,9 @@
                 :to="link.route"
               >
                 <v-list-tile-content>
-                  <v-list-tile-title class="black--text uppercase">
-                    {{ link.text }}
-                  </v-list-tile-title>
+                  <v-list-tile-title class="black--text uppercase">{{
+                    link.text
+                  }}</v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
             </v-list>
@@ -68,17 +68,19 @@ export default {
 .theme--dark.v-divider {
   border-color: #000;
 }
-.application a.v-list__tile--active {
-  border-left: 3px solid #00695c;
+>>> .application a {
   cursor: default;
+}
+>>> .v-list {
+  border: 1px solid #d1d5da;
+}
+>>> .v-list > div.title {
+  border-bottom: 1px solid #d1d5da;
+}
+>>> .v-list__tile--active {
+  border-left: 3px solid #00695c;
 }
 .layout.column.list {
   max-width: 150px;
-}
-.v-list {
-  border: 1px solid #d1d5da;
-}
-.v-list > div.title {
-  border-bottom: 1px solid #d1d5da;
 }
 </style>
